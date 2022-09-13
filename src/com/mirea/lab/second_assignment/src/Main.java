@@ -18,8 +18,7 @@ public class Main {
             System.out.println("Play Poker - 2");
             System.out.println("Type Words - 3");
             System.out.print("Choose Task [1, 2, 3]: ");
-            int n = scanner.nextInt();
-            switch (n) {
+            switch (scanner.nextInt()) {
                 case 1:
                     reverseArray(scanner);
                     break;

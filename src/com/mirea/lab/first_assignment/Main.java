@@ -9,8 +9,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print("Choose task [1,2,3,4,5]: ");
-            int n = scanner.nextInt();
-            switch (n) {
+            switch (scanner.nextInt()) {
                 case 1:
                     taskOne();
                     break;
