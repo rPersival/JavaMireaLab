@@ -19,7 +19,7 @@ public class Tester {
         circles = new Circle[count];
         Random random = new Random();
         for (int i = 0; i < count; i++)
-            circles[i] = new Circle(random.nextInt(50), random.nextInt(50), random.nextDouble() * 15);
-
+            circles[i] = new Circle(random.nextInt(50), random.nextInt(50),
+                    random.nextDouble() * 15);
     }
 }

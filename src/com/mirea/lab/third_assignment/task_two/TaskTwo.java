@@ -1,6 +1,35 @@
 package com.mirea.lab.third_assignment.task_two;
 
-public class WrapperTests {
+import java.util.Scanner;
+
+public class TaskTwo {
+
+    public static void start(Scanner scanner) {
+        while (true) {
+            System.out.print("Choose task [1,2,3,4]: ");
+            int n = scanner.nextInt();
+            switch (n) {
+                case 1:
+                    taskOne();
+                    break;
+
+                case 2:
+                    taskTwo();
+                    break;
+
+                case 3:
+                    taskThree();
+                    break;
+
+                case 4:
+                    taskFour();
+                    break;
+
+                default:
+                    return;
+            }
+        }
+    }
 
     public static void taskOne() {
         Double num = Double.valueOf(1.2323);
@@ -22,12 +51,6 @@ public class WrapperTests {
         double doubleNum = num.doubleValue();
         boolean boolNum = num > 0;
         char character = num.toString().charAt(0);
-        Byte b = 0;
-        Character c = 'e';
-        Float fl = 1.02f;
-        Integer ii = 15;
-        Long l = 123L;
-        Short sh = 9;
         System.out.println(intNum);
         System.out.println(byteNum);
         System.out.println(shortNum);

@@ -11,7 +11,7 @@ public class Deck {
 
         List<Card> deck = new ArrayList<>();
 
-        for (CardSuit suit : CardSuit.getSuits())
+        for (CardSuit suit : CardSuit.SUITS)
             for (String name : deckNames)
                 deck.add(new Card(name, suit));
 

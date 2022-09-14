@@ -18,8 +18,4 @@ public enum CardSuit {
     public String getSuit() {
         return this.suit;
     }
-
-    public static List<CardSuit> getSuits() {
-        return SUITS;
-    }
 }
