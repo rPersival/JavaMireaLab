@@ -45,6 +45,26 @@ public enum ClothingSize {
         return "";
     }
 
+    public static ClothingSize getByName(String name) {
+        switch (name) {
+            case "XXS":
+                return ClothingSize.XXS;
+
+            case "XS":
+                return ClothingSize.XS;
+
+            case "S":
+                return ClothingSize.S;
+
+            case "M":
+                return ClothingSize.M;
+
+            default:
+            case "L":
+                return ClothingSize.L;
+        }
+    }
+
     @Override
     public String toString() {
         return this.getName() + " | EU size: " + this.getEuroSize() + " | " + this.getDescription();

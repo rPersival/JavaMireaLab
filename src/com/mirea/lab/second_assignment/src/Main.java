@@ -1,5 +1,7 @@
 package com.mirea.lab.second_assignment.src;
 
+import com.mirea.lab.Selector;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -12,29 +14,9 @@ public class Main {
                 "or simply click Ctrl+Shift+F10 in the tests package\n");
 
         Scanner scanner = new Scanner(System.in);
+        String info = "Reverse Array - 1\nPlay Poker - 2\nType Words - 3";
 
-        while (true) {
-            System.out.println("Reverse Array - 1");
-            System.out.println("Play Poker - 2");
-            System.out.println("Type Words - 3");
-            System.out.print("Choose Task [1, 2, 3]: ");
-            switch (scanner.nextInt()) {
-                case 1:
-                    reverseArray(scanner);
-                    break;
-
-                case 2:
-                    playPoker(scanner);
-                    break;
-
-                case 3:
-                    HowMany.howManyWords(scanner);
-                    break;
-
-                default:
-                    return;
-            }
-        }
+        Selector.selectTaskScanner(scanner, info, Main::reverseArray, Main::playPoker, HowMany::howManyWords);
     }
 
     public static void reverseArray(Scanner scanner) {

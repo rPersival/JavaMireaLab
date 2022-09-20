@@ -1,5 +1,7 @@
 package com.mirea.lab.first_assignment;
 
+import com.mirea.lab.Selector;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -7,33 +9,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.print("Choose task [1,2,3,4,5]: ");
-            switch (scanner.nextInt()) {
-                case 1:
-                    taskOne();
-                    break;
 
-                case 2:
-                    taskTwo();
-                    break;
-
-                case 3:
-                    taskThree(args);
-                    break;
-
-                case 4:
-                    taskFour();
-                    break;
-
-                case 5:
-                    taskFive();
-                    break;
-
-                default:
-                    return;
-            }
-        }
+        Selector.selectTask(scanner, null, Main::taskOne, Main::taskTwo,
+                () -> taskThree(args), Main::taskFour, Main::taskFive);
     }
 
     public static void taskOne() {

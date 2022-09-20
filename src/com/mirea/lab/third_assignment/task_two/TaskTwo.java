@@ -1,34 +1,14 @@
 package com.mirea.lab.third_assignment.task_two;
 
+import com.mirea.lab.Selector;
+
 import java.util.Scanner;
 
 public class TaskTwo {
 
     public static void start(Scanner scanner) {
-        while (true) {
-            System.out.print("Choose task [1,2,3,4]: ");
-            int n = scanner.nextInt();
-            switch (n) {
-                case 1:
-                    taskOne();
-                    break;
-
-                case 2:
-                    taskTwo();
-                    break;
-
-                case 3:
-                    taskThree();
-                    break;
-
-                case 4:
-                    taskFour();
-                    break;
-
-                default:
-                    return;
-            }
-        }
+        Selector.selectTask(scanner, "Wrapper tasks (0 to exit)", TaskTwo::taskOne, TaskTwo::taskTwo,
+                TaskTwo::taskThree, TaskTwo::taskFour);
     }
 
     public static void taskOne() {

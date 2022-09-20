@@ -1,5 +1,7 @@
 package com.mirea.lab.third_assignment.task_one;
 
+import com.mirea.lab.Selector;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -7,30 +9,8 @@ import java.util.Scanner;
 public class TaskOne {
 
     public static void start(Scanner scanner) {
-        while (true) {
-            System.out.print("Choose task [1,2,3,4]: ");
-            int n = scanner.nextInt();
-            switch (n) {
-                case 1:
-                    taskOne();
-                    break;
-
-                case 2:
-                    taskTwo();
-                    break;
-
-                case 3:
-                    taskThree();
-                    break;
-
-                case 4:
-                    taskFour(scanner);
-                    break;
-
-                default:
-                    return;
-            }
-        }
+        Selector.selectTask(scanner, "Math tasks (0 to exit)", TaskOne::taskOne, TaskOne::taskTwo, TaskOne::taskThree,
+                () -> taskFour(scanner));
     }
 
     public static void taskOne() {

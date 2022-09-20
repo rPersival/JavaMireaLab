@@ -1,5 +1,7 @@
 package com.mirea.lab.third_assignment.task_three;
 
+import com.mirea.lab.Selector;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -7,24 +9,8 @@ import java.util.Scanner;
 public class TaskThree {
 
     public static void start(Scanner scanner) {
-        while (true) {
-            System.out.println("Convert - 1");
-            System.out.println("Generate reports - 2");
-            System.out.print("Choose task [1,2]: ");
-            int n = scanner.nextInt();
-            switch (n) {
-                case 1:
-                    taskOne(scanner);
-                    break;
-
-                case 2:
-                    taskTwo();
-                    break;
-
-                default:
-                    return;
-            }
-        }
+        Selector.selectTask(scanner, "Convert tasks (0 to exit)\nConvert - 1\nGenerate reports - 2",
+                () -> taskOne(scanner), TaskThree::taskTwo);
     }
 
     public static void taskOne(Scanner scanner) {
@@ -34,29 +20,16 @@ public class TaskThree {
                 new Product("Tea", 2),
                 new Product("Keyboard", 15)
         );
-        System.out.println("RUB - 1");
-        System.out.println("EUR - 2");
-        System.out.println("USD - 3");
-        System.out.println("Select rate: ");
-        switch (scanner.nextInt()) {
-            case 1:
-                rate = Rates.RUB;
-                break;
-            case 2:
-                rate = Rates.EUR;
-                break;
-            default:
-                rate = Rates.USD;
-                break;
-        }
+
+        rate = Selector.selectOrDefault(scanner, Rates.USD,"RUB - 1\nEUR - 2\nUSD - 3", "Select rate",
+                Rates.RUB, Rates.EUR, Rates.USD);
         Shop shop = new Shop();
         for (Product product : products)
             shop.add(product);
         shop.getProductList();
-        System.out.println("Select product: ");
-        int productNum = scanner.nextInt() - 1;
-        if (productNum >= 0 && productNum < products.size())
-            shop.buyProduct(products.get(productNum), rate);
+        Product product = Selector.select(scanner, null, "Select product", products.toArray(new Product[0]));
+        if (product != null)
+            shop.buyProduct(product, rate);
     }
 
     public static void taskTwo() {
