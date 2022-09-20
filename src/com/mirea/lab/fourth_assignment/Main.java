@@ -1,6 +1,10 @@
 package com.mirea.lab.fourth_assignment;
 
 import com.mirea.lab.Selector;
+import com.mirea.lab.fourth_assignment.task_four.Computer;
+import com.mirea.lab.fourth_assignment.task_four.ComputerBuilder;
+import com.mirea.lab.fourth_assignment.task_four.components.*;
+import com.mirea.lab.fourth_assignment.task_four.manufacturers.*;
 import com.mirea.lab.fourth_assignment.task_one.Season;
 import com.mirea.lab.fourth_assignment.task_three.Authenticator;
 import com.mirea.lab.fourth_assignment.task_three.Product;
@@ -18,8 +22,12 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        Selector.selectTaskScanner(scanner, "Season task - 1\nAtelier tasks - 2\nShop tasks - 3", Main::taskOne,
-                Main::taskTwo, Main::taskThree);
+        Selector.selectTaskScanner(scanner,
+                "Season task - 1\nAtelier tasks - 2\nShop tasks - 3\nBuild PC of your dreams (not quite tho) - 4",
+                Main::taskOne,
+                Main::taskTwo,
+                Main::taskThree,
+                Main::taskFour);
     }
 
     private static ClothingSize getSize(Scanner scanner) {
@@ -100,5 +108,27 @@ public class Main {
         Selector.multiSelect(scanner, "Select product", Shop::addToCart,
                 Shop.getProductList().toArray(new Product[0]));
         Shop.buyAllProductsInCart();
+    }
+
+    private static void taskFour(Scanner scanner) {
+        System.out.println("Here, I build a PC for you: ");
+        Computer gamingPC = Computer.createBuilder()
+                .setCPU(new CPU(CPUManufacturer.AMD,
+                4.7d, 105, 8, "AM4", "AMD Ryzen 7 5800x"))
+                .setGPU(new GPU(GPUManufacturer.MSI, "PCI x16 3.0", 6144, "MSI GAMING X 1660 ti"))
+                .setMemory(new ArrayList<>(Arrays.asList(
+                        new RAM(RAMManufacturer.Kingston, 3200, 8192,
+                                "Kingston FURY Beast Black"),
+                        new RAM(RAMManufacturer.Kingston, 3200, 8192,
+                                "Kingston FURY Beast Black"))))
+                .setStorageDevices(new ArrayList<>(Arrays.asList(
+                        new HDD(2048, 180, HDDManufacturer.WesternDigital,
+                                "WD Red IntelliPower 2 TB"),
+                        new SSD(480, 500, SSDManufacturer.Kingston,
+                                "Kingston A400 480 GB")
+                )))
+                .setMotherboard(new Motherboard(MotherboardManufacturer.MSI, "AM4", "Standard-ATX",
+                        "B550", "MSI MAG B550 TOMAHAWK")).build();
+        gamingPC.getInfo();
     }
 }

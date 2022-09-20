@@ -61,7 +61,7 @@ public class Selector {
         while (true) {
             if (currentMax < 1) return currentSelect;
             for (int i = 0; i < info.size(); i++)
-                System.out.println(info.get(i) + " " + (i + 1));
+                System.out.println(info.get(i) + " - " + (i + 1));
             int selected = getShortInfo(scanner, selectorName, currentMax);
             if (selected < 1 || selected > currentMax) return currentSelect;
             T selectedT = list.remove(selected - 1);
